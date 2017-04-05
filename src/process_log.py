@@ -31,7 +31,7 @@ err_lines=[]
 i=0
 with io.open(input_paths[0], 'rb') as f:
     for line in f:
-            try:
+        try:
                 #print(line)
                 host = line.split()[0]
                 #print(host)
@@ -81,11 +81,10 @@ with io.open(input_paths[0], 'rb') as f:
                             
                     if time_test[-1]-time_test[0]>datetime.timedelta(0,20):
                         Feature4_dict[host]=(Feature4_dict[host])[-1]
-                except:
-                    err_lines.append(line)
-                    pass
-     
                 i+=1
+        except:
+            err_lines.append(line)
+            i+=1
     
 #Feature_3
 df=pd.DataFrame({'timeSTAMPS':timestamp_records})
