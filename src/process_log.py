@@ -105,7 +105,7 @@ df_rolling=df_resampled=df=None
 Feature1_output_key=sorted(Feature1_dict, key=lambda key: (-Feature1_dict[key], key))[:10]
 with open(output_paths[0], 'w') as f:
     for item in Feature1_output_key:
-        text=item+', '+str(Feature1_dict[item])+'\n'
+        text=item+','+str(Feature1_dict[item])+'\n'
         f.write(text)
 f.close()
 
@@ -122,7 +122,7 @@ f.close()
 #Feature_3
 with open(output_paths[1], 'w') as f:
     for key in df_sort.index: 
-        text=key.strftime('%d/%b/%Y:%H:%M:%S %z')+ ', ' +str(int((df_sort.loc[df_sort.index==key])['count'][0]))+'\n'
+        text=key.strftime('%d/%b/%Y:%H:%M:%S %z')+ ',' +str(int((df_sort.loc[df_sort.index==key])['count'][0]))+'\n'
         f.write(text)
 f.close()
 
