@@ -1,16 +1,17 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #test
+
+#capturing the arguments passed through bash environment (input and output files)
 import sys
 arguments = sys.argv
-
-
 input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
+#end capturing arguments
 
-
+#importing libraries
 import os
 import re
 import sys
@@ -19,7 +20,7 @@ from collections import defaultdict
 from dateutil import parser
 import datetime
 import pandas as pd
-#with io.open(file_name, 'r', encoding='windows-1252') as twitter_file:
+#end import
 
 Feature1_dict=defaultdict(int)
 Feature1_output_key=[]
