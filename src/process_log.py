@@ -1,12 +1,15 @@
 #test
 import sys
 arguments = sys.argv
-
+# delete this after finishing the code.
+arguments = ['./src/process_log.py', './log_input/log.txt', './log_output/hosts.txt', './log_output/hours.txt', 
+             './log_output/resources.txt', './log_output/blocked.txt']
 input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
-
+input_paths=['/home/mattie_/fansite-analytics-challenge/insight_testsuite/temp'+item[1:] for item in input_paths]
+output_paths=['/home/mattie_/fansite-analytics-challenge/insight_testsuite/temp'+item[1:] for item in output_paths]
 
 import os
 import re
@@ -84,9 +87,11 @@ with io.open(input_paths[0], 'rb') as f:
             if httpCode=='401': #failed login attempt http code 401
                 Feature4_dict[host].append(timeofday)
                 time_test = Feature4_dict[host]
+
                 if len(time_test)>2:
                     if time_test[-1]-time_test[0]<datetime.timedelta(0,21):
                         Feature4_output.append(line)
+                        #print(Feature4_output)
 
                 if time_test[-1]-time_test[0]>datetime.timedelta(0,20):
                     Feature4_dict[host]=(Feature4_dict[host])[-1]
@@ -105,7 +110,7 @@ df_rolling = (df_resampled.rolling('60T').sum())
 df_sort=df_rolling.sort_values('count', ascending=False)
 df_sort = df_sort[:10]
 
-df_rolling=df_resampled=df=None
+#df_rolling=df_resampled=df=None
     
     
 #output
