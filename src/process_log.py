@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 #test
 
-#capturing the arguments passed through bash environment (input and output files)
+#***capturing the arguments passed through bash environment (input and output files)
 import sys
 arguments = sys.argv
 input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
-#end capturing arguments
+#***end capturing arguments
 
-#importing libraries
+#***importing libraries
 import os
 import re
 import sys
@@ -20,18 +20,28 @@ from collections import defaultdict
 from dateutil import parser
 import datetime
 import pandas as pd
-#end import
+#***end import
 
+#***defining dictionaries and lists for storing data
+
+#Fea.1
 Feature1_dict=defaultdict(int)
 Feature1_output_key=[]
+
+#Fea.2
 Feature2_dict=defaultdict(int)
 Feature2_output_key=[]
+
+#Fea.3
 Feature3_dict={}
 timestamp_records=[]
+
+#Fea.4
 Feature4_dict=defaultdict(list)
 Feature4_output=[]
 list_time_temp=[]
 
+#lines of log file raised error
 err_lines=[]
 
 i=0
