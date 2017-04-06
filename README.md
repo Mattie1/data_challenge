@@ -1,5 +1,5 @@
 # Table of Contents
-1. [Environment](README.md#Environment)
+1. [Environment](README.md#Environment & Dependencies)
 2. [Details of Implementation](README.md#details-of-implementation)
 3. [Download Data](README.md#download-data)
 4. [Description of Data](README.md#description-of-data)
@@ -10,11 +10,141 @@
 9. [FAQ](README.md#faq)
 
 
-# Environment
+# Environment & Dependencies
+ The following is the environment.yml file containing the libraries and dependencies:
+ 
+        name: py2
+        channels:
+        - anaconda-fusion
+        - defaults
+        dependencies:
+        - _nb_ext_conf=0.3.0=py27_0
+        - alabaster=0.7.10=py27_0
+        - anaconda-client=1.6.2=py27_0
+        - astroid=1.4.9=py27_0
+        - babel=2.4.0=py27_0
+        - backports=1.0=py27_0
+        - backports_abc=0.5=py27_0
+        - bleach=1.5.0=py27_0
+        - chardet=2.3.0=py27_0
+        - clyent=1.2.2=py27_0
+        - configparser=3.5.0=py27_0
+        - dbus=1.10.10=0
+        - decorator=4.0.11=py27_0
+        - docutils=0.13.1=py27_0
+        - entrypoints=0.2.2=py27_1
+        - enum34=1.1.6=py27_0
+        - expat=2.1.0=0
+        - fontconfig=2.12.1=3
+        - freetype=2.5.5=2
+        - functools32=3.2.3.2=py27_0
+        - get_terminal_size=1.0.0=py27_0
+        - glib=2.50.2=1
+        - gst-plugins-base=1.8.0=0
+        - gstreamer=1.8.0=0
+        - html5lib=0.999=py27_0
+        - icu=54.1=0
+        - imagesize=0.7.1=py27_0
+        - ipykernel=4.5.2=py27_0
+        - ipython=5.3.0=py27_0
+        - ipython_genutils=0.2.0=py27_0
+        - ipywidgets=6.0.0=py27_0
+        - isort=4.2.5=py27_0
+        - jedi=0.9.0=py27_1
+        - jinja2=2.9.5=py27_0
+        - jpeg=9b=0
+        - jsonschema=2.5.1=py27_0
+        - jupyter=1.0.0=py27_3
+        - jupyter_client=5.0.0=py27_0
+        - jupyter_console=5.1.0=py27_0
+        - jupyter_core=4.3.0=py27_0
+        - lazy-object-proxy=1.2.2=py27_0
+        - libffi=3.2.1=1
+        - libgcc=5.2.0=0
+        - libiconv=1.14=0
+        - libpng=1.6.27=0
+        - libsodium=1.0.10=0
+        - libxcb=1.12=1
+        - libxml2=2.9.4=0
+        - markupsafe=0.23=py27_2
+        - mistune=0.7.4=py27_0
+        - mkl=2017.0.1=0
+        - nb_anacondacloud=1.2.0=py27_0
+        - nb_conda=2.0.0=py27_0
+        - nb_conda_kernels=2.0.0=py27_0
+        - nbconvert=5.1.1=py27_0
+        - nbformat=4.3.0=py27_0
+        - nbpresent=3.0.2=py27_0
+        - notebook=4.4.1=py27_0
+        - numpy=1.12.1=py27_0
+        - numpydoc=0.6.0=py27_0
+        - openssl=1.0.2k=1
+        - pandas=0.19.2=np112py27_1
+        - pandocfilters=1.4.1=py27_0
+        - path.py=10.1=py27_0
+        - pathlib2=2.2.0=py27_0
+        - pcre=8.39=1
+        - pep8=1.7.0=py27_0
+        - pexpect=4.2.1=py27_0
+        - pickleshare=0.7.4=py27_0
+        - pip=9.0.1=py27_1
+        - prompt_toolkit=1.0.13=py27_0
+        - psutil=5.2.1=py27_0
+        - ptyprocess=0.5.1=py27_0
+        - pyflakes=1.5.0=py27_0
+        - pygments=2.2.0=py27_0
+        - pylint=1.6.4=py27_1
+        - pyqt=5.6.0=py27_2
+        - python=2.7.13=0
+        - python-dateutil=2.6.0=py27_0
+        - pytz=2017.2=py27_0
+        - pyyaml=3.12=py27_0
+        - pyzmq=16.0.2=py27_0
+        - qt=5.6.2=3
+        - qtawesome=0.4.4=py27_0
+        - qtconsole=4.3.0=py27_0
+        - qtpy=1.2.1=py27_0
+        - readline=6.2=2
+        - requests=2.13.0=py27_0
+        - rope=0.9.4=py27_1
+        - scandir=1.5=py27_0
+        - setuptools=27.2.0=py27_0
+        - simplegeneric=0.8.1=py27_1
+        - singledispatch=3.4.0.3=py27_0
+        - sip=4.18=py27_0
+        - six=1.10.0=py27_0
+        - snowballstemmer=1.2.1=py27_0
+        - sphinx=1.5.1=py27_0
+        - spyder=3.1.3=py27_0
+        - sqlite=3.13.0=0
+        - ssl_match_hostname=3.4.0.2=py27_1
+        - terminado=0.6=py27_0
+        - testpath=0.3=py27_0
+        - tk=8.5.18=0
+        - tornado=4.4.2=py27_0
+        - traitlets=4.3.2=py27_0
+        - wcwidth=0.1.7=py27_0
+        - wheel=0.29.0=py27_0
+        - widgetsnbextension=2.0.0=py27_0
+        - wrapt=1.10.8=py27_0
+        - yaml=0.1.6=0
+        - zeromq=4.1.5=0
+        - zlib=1.2.8=3
+        - pip:
+          - backports-abc==0.5
+          - backports.shutil-get-terminal-size==1.0.0
+          - backports.ssl-match-hostname==3.4.0.2
+          - ipython-genutils==0.2.0
+          - jupyter-client==5.0.0
+          - jupyter-console==5.1.0
+          - jupyter-core==4.3.0
+          - nb-anacondacloud==1.2.0
+          - nb-conda==2.0.0
+          - nb-conda-kernels==2.0.0
+          - prompt-toolkit==1.0.13
+          - regex==2017.2.8
+        prefix: /home/mattie_/anaconda3/envs/py2
 
-Picture yourself as a backend engineer for a NASA fan website that generates a large amount of Internet traffic data. Your challenge is to perform basic analytics on the server log file, provide useful metrics, and implement basic security measures. 
-
-The desired features are described below: 
 
 ### Feature 1: 
 List the top 10 most active host/IP addresses that have accessed the site.
