@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 #test
 import sys
 arguments = sys.argv
@@ -6,6 +8,7 @@ input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
+
 
 
 import os
