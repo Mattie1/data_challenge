@@ -48,30 +48,31 @@ i=0
 with io.open(input_paths[0], 'rb') as f:
     for line in f:
         try:
-            #print(line)
-            host = line.split()[0]
-            #print(host)
-            Feature1_dict[host] +=1
+            
+            host = line.split()[0] #spliting the first column
+            
+            Feature1_dict[host] +=1 #counting each host records
 
-            timestamp = re.findall(r'\[(.+?)\]', line)[0]
-            #print(timestamp)
-            colon_location= timestamp.find(':')
+            timestamp = re.findall(r'\[(.+?)\]', line)[0] #extracting timestamp identified by []
+            
+            colon_location= timestamp.find(':') #finding and replacing the first ':' from [01/Aug/1995:00:00:07 -0400]
             timestamp_edit = timestamp[:11]+' '+timestamp[11+1:]
-            timeofday=parser.parse(timestamp_edit)
+            
+            timeofday=parser.parse(timestamp_edit) #converting the string to datetime type
             timestamp_records.append(timeofday)
 
 
 
             request = re.findall(r'''"(.*?)"+\s+''', line)
-            #print(line)
-            if 'GET' in line:
-                QuotationMark_location = [x.start() for x in re.finditer('"', line)]
-                #print(QuotationMark_location)
+            
+            if '“' not in line:
+                QuotationMark_location = [x.start() for x in re.finditer('"', line)] #finding the locations of " 
                 if len(QuotationMark_location)>2:
                     for item in QuotationMark_location[1:-1]:
                         line=line[:item]+line[item+1:]
                 request = re.findall(r'''"(.*?)"''', line)[0]
-            if 'POST' in line:
+                
+            if '“' in line:
                 begining = [x.start() for x in re.finditer('“', line)][0]
                 ending = [x.start() for x in re.finditer('”', line)][0]
                 request=line[begining:ending]
