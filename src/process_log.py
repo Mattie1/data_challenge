@@ -1,15 +1,12 @@
-#test
+#python 2
 import sys
 arguments = sys.argv
-# delete this after finishing the code.
-arguments = ['./src/process_log.py', './log_input/log.txt', './log_output/hosts.txt', './log_output/hours.txt', 
-             './log_output/resources.txt', './log_output/blocked.txt']
+
 input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
-input_paths=['/home/mattie_/fansite-analytics-challenge/insight_testsuite/temp'+item[1:] for item in input_paths]
-output_paths=['/home/mattie_/fansite-analytics-challenge/insight_testsuite/temp'+item[1:] for item in output_paths]
+
 
 import os
 import re
