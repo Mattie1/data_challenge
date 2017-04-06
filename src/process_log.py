@@ -1,4 +1,4 @@
-#python 2
+#test
 import sys
 arguments = sys.argv
 
@@ -103,8 +103,9 @@ df.index = pd.to_datetime(df.timeSTAMPS)
 df.columns=['count']
 df['count']=1
 df_resampled=pd.DataFrame(df['count'].resample('60S').sum())
-df_rolling = (df_resampled.rolling('60T').sum())
+df_rolling = pd.rolling_sum(df[::-1], window=60, min_periods=0, how='down')[::-1]
 df_sort=df_rolling.sort_values('count', ascending=False)
+df_sort= df_sort[~df_sort.index.duplicated()]
 df_sort = df_sort[:10]
 
 #df_rolling=df_resampled=df=None
