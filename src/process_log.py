@@ -1,3 +1,4 @@
+#test
 import sys
 arguments = sys.argv
 
@@ -5,6 +6,7 @@ input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
+
 
 import os
 import re
@@ -32,56 +34,63 @@ i=0
 with io.open(input_paths[0], 'rb') as f:
     for line in f:
         try:
-                #print(line)
-                host = line.split()[0]
-                #print(host)
-                Feature1_dict[host] +=1
-                
-                timestamp = re.findall(r'\[(.+?)\]', line)[0]
-                #print(timestamp)
-                colon_location= timestamp.find(':')
-                timestamp_edit = timestamp[:11]+' '+timestamp[11+1:]
-                timeofday=parser.parse(timestamp_edit)
-                timestamp_records.append(timeofday)
-                
-                
-                
-                request = re.findall(r'''"(.*?)"+\s+''', line)
-                
+            #print(line)
+            host = line.split()[0]
+            #print(host)
+            Feature1_dict[host] +=1
+
+            timestamp = re.findall(r'\[(.+?)\]', line)[0]
+            #print(timestamp)
+            colon_location= timestamp.find(':')
+            timestamp_edit = timestamp[:11]+' '+timestamp[11+1:]
+            timeofday=parser.parse(timestamp_edit)
+            timestamp_records.append(timeofday)
+
+
+
+            request = re.findall(r'''"(.*?)"+\s+''', line)
+            #print(line)
+            if 'GET' in line:
                 QuotationMark_location = [x.start() for x in re.finditer('"', line)]
-                for item in QuotationMark_location[1:-1]:
-                    line=line[:item]+line[item+1:]
+                #print(QuotationMark_location)
+                if len(QuotationMark_location)>2:
+                    for item in QuotationMark_location[1:-1]:
+                        line=line[:item]+line[item+1:]
+                request = re.findall(r'''"(.*?)"''', line)[0]
+            if 'POST' in line:
+                begining = [x.start() for x in re.finditer('“', line)][0]
+                ending = [x.start() for x in re.finditer('”', line)][0]
+                request=line[begining:ending]
                 
-                request = re.findall(r'''"(.*?)"+\s+''', line)[0]
-                #print(request)
- 
-                httpCode = line.split()[-2]
-                #print(httpCode)
-        
-                bytes = line.split()[-1]
-                #print(bytes)
-                
-                if 'GET' in request:
-                    request_resource = request.split(' ')[1]
-                    #print(request_split)
-                    try:
-                        Feature2_dict[request_resource] += int(bytes)
-                    except:
-                        pass
+            #print(request)
+
+            httpCode = line.split()[-2]
+            #print(httpCode)
+
+            bytes = line.split()[-1]
+            #print(bytes)
+
+
+            request_resource = request.split(' ')[1]
+            #print(request_resource)
+            try:
+                Feature2_dict[request_resource] += int(bytes)
+            except:
+                pass
 
 
                 
-                #Feature_4
-                if httpCode=='401': #failed login attempt http code 401
-                    Feature4_dict[host].append(timeofday)
-                    time_test = Feature4_dict[host]
-                    if len(time_test)>2:
-                        if time_test[-1]-time_test[0]<datetime.timedelta(0,21):
-                            Feature4_output.append(line)
-                            
-                    if time_test[-1]-time_test[0]>datetime.timedelta(0,20):
-                        Feature4_dict[host]=(Feature4_dict[host])[-1]
-                i+=1
+            #Feature_4
+            if httpCode=='401': #failed login attempt http code 401
+                Feature4_dict[host].append(timeofday)
+                time_test = Feature4_dict[host]
+                if len(time_test)>2:
+                    if time_test[-1]-time_test[0]<datetime.timedelta(0,21):
+                        Feature4_output.append(line)
+
+                if time_test[-1]-time_test[0]>datetime.timedelta(0,20):
+                    Feature4_dict[host]=(Feature4_dict[host])[-1]
+            i+=1
         except:
             err_lines.append(line)
             i+=1
