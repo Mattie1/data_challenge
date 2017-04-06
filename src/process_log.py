@@ -4,11 +4,11 @@
 import sys
 arguments = sys.argv
 
+
 input_paths = [item for item in arguments if 'input' in item]
 output_paths = [item for item in arguments if 'output' in item]
 print(input_paths)
 print(output_paths)
-
 
 
 import os
@@ -88,7 +88,7 @@ with io.open(input_paths[0], 'rb') as f:
                 Feature4_dict[host].append(timeofday)
                 time_test = Feature4_dict[host]
 
-                if len(time_test)>2:
+                if len(time_test)>3:
                     if time_test[-1]-time_test[0]<datetime.timedelta(0,21):
                         Feature4_output.append(line)
                         #print(Feature4_output)
